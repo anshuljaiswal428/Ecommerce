@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import AdminRoutes from './routes/AdminRoutes';
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminRegister from './pages/Admin/AdminRegister';
-import AdminHome from './pages/Admin/AdminHome';
+import AdminDashboard from './pages/Admin/AdminDashboard';
 import AdminAddProduct from './pages/Admin/AdminAddProduct';
 
 
@@ -13,10 +13,12 @@ function App() {
       <Routes>
         <Route path='/admin/login' element={<AdminLogin/>}/>
         <Route path='/admin/register' element={<AdminRegister/>}/>
+
         <Route path='/admin' element={<AdminRoutes/>}>
-          <Route index element={<AdminHome/>}/>
-          <Route path='/add-product' element={<AdminAddProduct/>}/>
+          <Route index element={<AdminDashboard/>}/>
+          <Route path='/admin/add-product' element={<AdminAddProduct/>}/>
         </Route>
+
       </Routes>
     </div>
   )

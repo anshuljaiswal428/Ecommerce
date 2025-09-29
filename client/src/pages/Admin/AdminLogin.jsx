@@ -41,12 +41,12 @@ const AdminLogin = () => {
             );
             localStorage.setItem('jwtToken', response.data.token);
             setSuccessMsg("✅ Login successfully!",);
-            navigate('/admin');
+
+            navigate('/admin')
         } catch (error) {
             setErrorMsg(
                 `❌ ${error.response?.data?.message} !` || "❌ Login failed. Try again."
             );
-            console.error("❌ Error:", error.response?.data || error.message);
         } finally {
             setLoading(false);
         }
@@ -54,10 +54,10 @@ const AdminLogin = () => {
 
     return (
         <div className="flex justify-center items-center h-screen w-full bg-white dark:bg-black">
-            <div className="max-w-2xl gap-10 w-full min-h-[55vh] bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-gray-700/40 rounded-2xl p-12 shadow-2xl flex flex-col items-center justify-center">
+            <div className="max-w-2xl gap-15 w-full min-h-[55vh] bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-gray-700/40 rounded-2xl p-12 shadow-2xl flex flex-col items-center justify-center">
 
                 {/* Title */}
-                <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-80">
+                <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
                     Admin Login
                 </h1>
 
@@ -90,7 +90,7 @@ const AdminLogin = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="bg-blue-600 h-8 hover:bg-blue-700 text-white font-semibold py-4 rounded-xl transition"
+                        className="bg-blue-600 h-8 hover:bg-blue-700 text-white font-semibold  rounded-xl transition"
                     >
                         {loading ? "Loading..." : "Login"}
                     </button>

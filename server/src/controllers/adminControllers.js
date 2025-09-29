@@ -7,11 +7,21 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-function generateToken(userId){
+function generateToken(owner){
     if (!process.env.JWT_SECRET) {
         throw new Error("JWT_SECRET is not defined in .env");
     }
-    return jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: "7d" });
+    return jwt.sign(
+    {
+      id: owner._id,
+      name: owner.name,
+      email: owner.email,
+      imageUrl: owner.imageUrl,
+      role: owner.role,
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: "7d" }
+  );
 }
 
 async function registerAdmin(req, res) {
@@ -77,11 +87,7 @@ async function loginAdmin(req, res) {
         }
 
         res.status(201).json({
-            _id: owner._id,
-            name: owner.name,
-            email: owner.email,
-            role: owner.role,
-            token: generateToken(owner._id),
+            token: generateToken(owner),
         });
     } catch (error) {
         res.status(500).json({ message: "Server error", error: error.message });

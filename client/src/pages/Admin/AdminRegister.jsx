@@ -19,7 +19,6 @@ const AdminRegister = () => {
 
     const handleFileChange = (e) => {
         setImage(e.target.files[0]);
-        console.log("file saved!");
     };
 
     const handleSubmit = async (e) => {
@@ -50,7 +49,6 @@ const AdminRegister = () => {
             setErrorMsg(
                 `❌ ${error.response?.data?.message} !` || "❌ Registration failed. Try again."
             );
-            console.error("❌ Error:", error.response?.data || error.message);
         } finally {
             setLoading(false);
         }
